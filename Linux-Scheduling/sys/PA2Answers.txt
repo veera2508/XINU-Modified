@@ -1,0 +1,46 @@
+Answer 1:
+
+EXPDIST:
+Advandatages:
+1. Fixed ratio will be observed over a long time
+2. Easier to implement and less overhead
+3. Theoretically no starvation
+
+Disadvantages:
+1. Practically starvation can happen for process with high priority value
+2. If the proiority values are too high, then the lowest process is chosen more often than not
+3. Depends on how good the pseudo random function is
+
+
+LINUXSCHED:
+Advandatages:
+1. Deterministic scheduler
+2. Takes into account both priority and goodness
+3. Avoids starvation and allows low priority process a chance to run due to greater goodness value
+4. Also allows tasks which yield a lot to run more often
+
+Disadvantages:
+1. Overhead increases as number of processes increases
+2. Process can artificially lock the cpu for itself by manipulating goodness values (sleeping for a long time)
+
+XINUSCHED:
+Advandatages:
+1. Low overhead
+2. Simplistic approach based on proiority
+
+Disadvantages:
+1. Starvation is possible
+2. Low priority task is never chosen until higher priority is done
+3. No way to reward good behaviour
+
+
+Answer 2:
+
+EXPDIST:
+NULLPROC gets scheduled when no other process is in the readyq.
+
+LINUXSCHED:
+NULLPROC gets scheduled when no other process has a non zero goodness value (start of new epoch)
+
+XINUSCHED:
+NULLPROC gets scheduled when no other process in readyq
